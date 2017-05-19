@@ -5,7 +5,7 @@ set(CMAKE_VERBOSE_MAKEFILE OFF)
 
 # Add module path for <name>.cmake conf files
 if(NOT CMAKE_MODULE_PATH)
-  set(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/contrib/)
+  set(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/contrib/)
 endif()
 
 include(${CMAKE_MODULE_PATH}/DJIConfig.cmake)
