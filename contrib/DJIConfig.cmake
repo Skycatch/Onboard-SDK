@@ -7,22 +7,26 @@ elseif(CMAKE_SYSTEM_PROCESSOR MATCHES "^arm*")
   set(TARGET_ARCH "arm")
 endif()
 
-#Detect platform - from https://gist.github.com/CoolerVoid/1781717
-EXECUTE_PROCESS(
-  COMMAND cat /etc/lsb-release
-  COMMAND grep DISTRIB_RELEASE
-  COMMAND awk -F= "{ print $2 }"
-  COMMAND tr "\n" " "
-  COMMAND sed "s/ //"
-  OUTPUT_VARIABLE LSB_VER
-  )
+if (EXISTS "/etc/lsb-release")
+  #Detect platform - from https://gist.github.com/CoolerVoid/1781717
+  EXECUTE_PROCESS(
+    COMMAND cat /etc/lsb-release
+    COMMAND grep DISTRIB_RELEASE
+    COMMAND awk -F= "{ print $2 }"
+    COMMAND tr "\n" " "
+    COMMAND sed "s/ //"
+    OUTPUT_VARIABLE LSB_VER
+    )
 
-if( ${LSB_VER} MATCHES "16.04")
-  set(DISTRO_VERSION 1604)
-elseif(${LSB_VER} MATCHES "14.04")
-  set(DISTRO_VERSION 1404)
-elseif(${LSB_VER} MATCHES "18")
-  set(DISTRO_VERSION 1604)
+  if( ${LSB_VER} MATCHES "16.04")
+    set(DISTRO_VERSION 1604)
+  elseif(${LSB_VER} MATCHES "14.04")
+    set(DISTRO_VERSION 1404)
+  elseif(${LSB_VER} MATCHES "18")
+    set(DISTRO_VERSION 1604)
+  else()
+    set(DISTRO_VERSION UNKNOWN)
+  endif()
 else()
   set(DISTRO_VERSION UNKNOWN)
 endif()
