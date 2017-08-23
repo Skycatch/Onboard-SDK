@@ -25,13 +25,13 @@
     .title((_title_), #_title_, __func__, __LINE__)                            \
     .print
 
-#define STATUS 1
-#define ERROR 1
-#define DEBUG 0
+#define DJI_STATUS 1
+#define DJI_ERROR 1
+#define DJI_DEBUG 0
 
-#define DSTATUS DLOG(STATUS)
-#define DERROR DLOG(ERROR)
-#define DDEBUG DLOG(DEBUG)
+#define DSTATUS DLOG(DJI_STATUS)
+#define DERROR DLOG(DJI_ERROR)
+#define DDEBUG DLOG(DJI_DEBUG)
 
 namespace DJI
 {
