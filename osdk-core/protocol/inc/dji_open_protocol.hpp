@@ -238,6 +238,10 @@ public:
    */
   ThreadAbstract* getThreadHandle() const;
 
+  void setStopCondition(bool stopCond);
+
+  bool getStopCondition(bool stopCond);
+
   /**********************************Fitlered******************************/
   void setKey(const char* key);
 

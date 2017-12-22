@@ -240,6 +240,7 @@ Vehicle::~Vehicle()
 {
   if (threadSupported)
   {
+    this->protocolLayer->setStopCondition(true);
     this->readThread->stopThread();
     this->callbackThread->stopThread();
     delete[](nbCallbackRecvContainer);

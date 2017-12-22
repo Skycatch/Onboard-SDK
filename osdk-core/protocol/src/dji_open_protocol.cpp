@@ -497,7 +497,7 @@ Protocol::receive()
 
   //! Run the readPoll until you get a true
   // @todo might need to modify to include thread stopCond
-  while (!readPoll(&receiveFrame));
+  while (!readPoll(&receiveFrame) && !stopCond);
   //! When we receive a true, return a copy of container to the caller: this is
   //! the 'receive' interface
 
@@ -1184,6 +1184,14 @@ ThreadAbstract*
 Protocol::getThreadHandle() const
 {
   return this->threadHandle;
+}
+
+void Protocol::setStopCondition(bool stopCond) {
+  this->stopCond = stopCond;
+}
+
+bool Protocol::getStopCondition(bool stopCond) {
+  return stopCond;
 }
 
 int

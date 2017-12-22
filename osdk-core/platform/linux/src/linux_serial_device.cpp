@@ -298,7 +298,7 @@ LinuxSerialDevice::_serialStart(const char* dev_name, int baud_rate)
   {
     ptemp = dev_name;
   }
-  if (true == _serialOpen(ptemp) && true == _serialConfig(baud_rate, 8, 'N', 1))
+  if (true == _serialOpen(ptemp) && true == _serialConfig(baud_rate, 8, 'N', 1, true))
   {
 
     FD_ZERO(&m_serial_fd_set);
