@@ -108,7 +108,7 @@ PosixThread::send_call(void* param)
   while (true)
   {
     vehiclePtr->protocolLayer->sendPoll();
-    usleep(10); //! @note CPU optimization, reduce the CPU usage a lot
+    usleep(100); //! @note CPU optimization, reduce the CPU usage a lot
   }
 }
 
@@ -123,7 +123,7 @@ PosixThread::read_call(void* param)
     // receive() implemented on the OpenProtocol side
     recvContainer = vehiclePtr->protocolLayer->receive();
     vehiclePtr->processReceivedData(recvContainer);
-    usleep(10); //! @note CPU optimization, reduce the CPU usage a lot
+    usleep(100); //! @note CPU optimization, reduce the CPU usage a lot
   }
   DDEBUG("Quit read function\n");
 }
@@ -135,7 +135,7 @@ PosixThread::callback_call(void* param)
   while (!(vehiclePtr->getStopCond()))
   {
     vehiclePtr->callbackPoll();
-    usleep(10); //! @note CPU optimization, reduce the CPU usage a lot
+    usleep(100); //! @note CPU optimization, reduce the CPU usage a lot
   }
   DDEBUG("Quit callback function\n");
 }

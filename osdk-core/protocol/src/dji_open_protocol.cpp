@@ -497,7 +497,9 @@ Protocol::receive()
 
   //! Run the readPoll until you get a true
   // @todo might need to modify to include thread stopCond
-  while (!readPoll(&receiveFrame) && !stopCond);
+  while (!stopCond && !readPoll(&receiveFrame)) {
+      usleep(10);
+  }
   //! When we receive a true, return a copy of container to the caller: this is
   //! the 'receive' interface
 
